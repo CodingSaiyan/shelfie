@@ -18,6 +18,7 @@ const express = require('express'),
 
       app.get("/api/inventory", PC.getProducts);
       app.post("/api/inventory", PC.addProduct);
+      app.put("/api/inventory/:id", PC.updateProduct);
       app.delete("/api/inventory/:id", PC.deleteProduct);
 
 

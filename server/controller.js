@@ -16,6 +16,24 @@ module.exports = {
         }).catch(() => {console.log('You did not add to DB')})
     },
 
+    updateProduct: (req, res) => {
+        let db = req.app.get('db');
+        let { id } = req.params;
+        let {name, price, img} = req.body;
+
+        db.getProducts({id}).then(response => {
+            let productToEdit = response[0];
+
+            name = name || productToEdit.name;
+            price = price || productToEdit.price;
+            img = img || productToEdit.img;
+
+            db.update_product({name, price, img}).then(response2 => {
+                res.status(200).send(response2)
+            })
+        }).catch(err, () => {console.log("Did not update", err)})
+    },
+
     deleteProduct: (req, res) => {
         let db = req.app.get('db');
         let { id } = req.params;
