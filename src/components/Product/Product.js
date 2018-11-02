@@ -1,9 +1,11 @@
 import React from 'react';
 
-function Product() {
+function Product(props) {
     return (
         <div>
-            Product functional component
+            <h2>{props.name}</h2>
+            <h3>{props.price}</h3>
+            <h4>{props.img}</h4>
         </div>
     )
 }
